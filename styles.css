@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CSS Animations — 40+ Effects
    Pure CSS, no dependencies
    ============================================ */
@@ -63,6 +63,7 @@ body {
   box-shadow: var(--shadow);
   transition: transform 0.2s, background 0.2s;
   border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
 }
 .card:hover { background: var(--surface-hover); }
 .card h3 {
@@ -494,6 +495,107 @@ body {
 .anim-stagger-fade span:nth-child(2) { animation-delay: 0.15s; background: var(--accent-2); }
 .anim-stagger-fade span:nth-child(3) { animation-delay: 0.3s; background: var(--accent-3); }
 .anim-stagger-fade span:nth-child(4) { animation-delay: 0.45s; background: #f472b6; }
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 1rem;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  max-width: 640px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal {
+  transform: scale(1) translateY(0);
+}
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.modal__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.modal__close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.modal__close:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+.modal__body {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+.code-block {
+  background: #0d1117;
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Cascadia Code', 'SF Mono', Monaco, monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.code-block pre { margin: 0; white-space: pre; }
+/* Simple syntax highlighting */
+.code-block .kw { color: #ff7b72; }
+.code-block .sel { color: #d2a8ff; }
+.code-block .prop { color: #7ee787; }
+.code-block .val { color: #79c0ff; }
+.code-block .num { color: #fca5a5; }
+.code-block .punc { color: #8b949e; }
+.code-block .str { color: #a5d6ff; }
+
+.modal__hint {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
 
 /* Footer */
 .footer {
